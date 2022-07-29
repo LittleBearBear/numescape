@@ -1,0 +1,295 @@
+/* 禁用滚动条、默认高度、设置背景色与字体 */
+html, body {
+    overflow:hidden;
+    overflow-y: hidden;
+
+    height: 100%;
+
+    background-color: #fef9dc;
+    font-family: Helvetica, Lucida Family, Verdana, Tahoma, Arial;
+    font-size: 18px;
+
+    /* 禁用文本选择 没用？*/
+    /*-webkit-touch-callout: none;*/
+    /*-webkit-user-select: none;*/
+    /*-moz-user-select: none;*/
+    /*-ms-user-select: none;*/
+    /*user-select: none;*/
+
+}
+
+
+    /* 盛满画面的容器，内容水平居中 */
+    #container {
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+    }
+
+/***************** 说明页 *****************/
+#instructionBK {
+    z-index: 9000;
+    position: absolute;
+
+    top: 0;
+
+    background-color: #fef9dc;
+    width: 100%;
+    height: 100%;
+}
+
+#instruction {
+    z-index: 9999;
+    position: absolute;
+
+    top: 0;
+
+    width: 100%;
+}
+
+/* 样式总说明
+
+        header   ___________________________________________
+                   header上留白:20px
+                 ___________________________________________
+                   header总高:66px
+                 ___________________________________________
+  gridContainer    实时计算的大小，最大不超过屏幕宽度*0.96
+        footer   ___________________________________________
+                   实时计算的大小
+
+*/
+
+/**************** header **************/
+/* 绝对定位的头部 定义好宽度高度 margin-bottom对board不起作用 */
+header{
+    position: absolute;
+    /*display: block;*/
+    /*padding-top: 28px; !* margin-bottom对下面绝对定位的元素不起作用, 故只设上margin *!*/
+
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+
+    /* 居中排布 */
+    text-align: center;
+}
+
+    /* 游戏内标题，浏览器已有，故暂时删去 */
+    /*h1 {  font-size: 40px;  }*/
+
+    /* header内p的颜色 */
+    p {  color: #3f9a9a;  }
+
+        /* p内span的样式 */
+        span {
+            /* 时间、步数、新游戏之间的间隙 */
+            margin-right: 5%;
+
+            /* 数字更大一些 */
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        #newGameBtn {
+            /** Position 服从父级元素安排 **/
+
+            /** Btn style **/
+            padding: 10px 16px;
+            width: 100px;
+            background-color: #c6f791;
+            border-radius: 10px;
+
+            /** font style **/
+            font-size: 18px;
+            color: #3f9a9a;
+            text-decoration: none; /* a标签默认样式去除 */
+        }
+
+        #newGameBtn:hover {
+            background-color: #77df9e;
+        }
+
+/**************** 棋盘 gridContainer **************/
+#gridContainer {
+    /** Position **/
+    margin: 0 auto; /* 棋盘里面内容居中 */
+    background-color: #77df9e;
+    position: relative; /* 方便子元素小格子进行绝对定位 */
+
+    /** Style **/
+    border-radius: 10px;
+    /*width: 375px;    !* js根据屏幕大小实时计算 *!*/
+    /*height: 375px;  !*  js根据屏幕大小实时计算 *!*/
+    /*padding: 20px;  !*  js根据屏幕大小实时计算 *!*/
+}
+
+/* 本来是背景色，为了简化已废弃 */
+/*.gridCell {*/
+    /*!** Position **!*/
+    /*position: absolute; !* JS计算故需要绝对定位 *!*/
+
+    /*!** Style **!*/
+    /*border-radius: 6px;*/
+    /*!*width: 100px;*!   !*  js根据屏幕大小实时计算 *!*/
+    /*!*height: 100px;*!  !*  js根据屏幕大小实时计算 *!*/
+/*}*/
+
+    .numberCell {
+        /** Position **/
+        position:absolute; /* JS计算故需要绝对定位 */
+
+        /** Style **/
+        border-radius: 6px;
+
+        /** font style **/
+        font-weight: bold;
+        /*font-size: 40px;     !* js根据屏幕大小实时计算 *!*/
+        /*line-height: 100px;  !* js根据屏幕大小实时计算 为了让数字垂直居中 *!*/
+        text-align: center;
+    }
+
+    /* for js add style , 画界面时让0元素看不见，然后为了移除样式方便 */
+    .hidden {
+        visibility: hidden;
+    }
+
+/**************** footer **************/
+footer {
+    position: absolute;  /* 上面的元素是计算出来的，下面的元素只能跟随着计算了 */
+    width: 100%;
+
+
+    /*height: 160px;*/  /* js根据屏幕大小实时计算 */
+    /*bottom: 0px;*/    /* js根据屏幕大小实时计算 */
+    /*left: 45%;*/      /* js根据屏幕大小实时计算 */
+}
+
+    footer a {
+        /*position: absolute;*/
+
+        /* 水平居中通过变成块级元素 */
+        display: block;
+        text-align: center;
+
+        background-color: #fef9dc;
+        color: #3f9a9a;
+        text-decoration: none;
+    }
+
+    h3 {
+        color: #3f9a9a;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    #gotoRankpage {
+        color: #3f9a9a;
+    }
+
+    #gotoRankpage:hover {
+        color: #3f9a9a;
+        background-color: #fef9dc;
+    }
+
+    #goToInstruction {
+        color: #3f9a9a;
+        font-size: 14px;
+        line-height: 44px; /* 撑高元素 */
+    }
+
+    /***************** 单选框 *****************/
+    /* 冲突的地方 */
+    #level {
+        margin-top: 10px;
+    }
+
+    #level span {
+        margin: 0 auto;
+        float: left;
+        font-size: 16px;
+        color: #3f9a9a;
+        line-height: 16px;
+        text-align: center;
+        /*padding-left: 5px;*/
+    }
+
+    ul { list-style-type: none; width: 100%; text-align: center;}
+    li { display: inline-block; }
+    li { margin: 10px 0; }
+    input.labelauty + label { font: 12px "Microsoft Yahei";}
+    label { width: 60%; }
+
+
+/**************** Rank Page ****************/
+
+/*
+    div #rank
+        img .exitBtn
+        div .rankHeader
+            h1 .title
+        div .topUsers
+            span
+            span
+        ...
+
+ */
+
+#rank {
+    color: #2f7979;
+    /*text-align: center;*/
+    margin: 0 auto;
+    height: 100%;
+    background-color: #fef9dc;
+
+    overflow-y: hidden;
+}
+
+.rankHeader {
+    /*width: 100%;*/
+    /*width: 200px;*/
+    /*width: 300px;*/
+    margin: 0 auto;
+    padding-top: 5%;
+    width: 100%;
+    height: 8%;
+
+    text-align: center;
+}
+
+.title {
+    margin: 0 auto;
+    font-size: 24px;
+    line-height: 48px;
+    width: 250px;
+    /*position: absolute;*/
+
+}
+
+.exitBtn {
+    float: right;
+    width: 44px;
+    /*margin-left: 5%;*/
+    /*display: inline;*/
+    /*position: absolute;*/
+}
+
+.topUsers {
+    /*position: absolute;*/
+
+    text-align: left;
+    background-color: #fef9dc;
+    margin-left: 10%;
+}
+
+.topUsers span {
+    font-size: 20px;
+    line-height: 48px;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.rankPageTime span {
+    padding-left: 20px;
+}
+

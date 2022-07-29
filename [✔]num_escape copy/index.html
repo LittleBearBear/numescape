@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <!-- 适配移动端 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- UC强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <meta name="full-screen" content="true">
+
+    <!-- QQ强制竖屏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>最强大脑之数字华容道，比比谁更厉害</title>
+    <meta name="description" content="最强大脑何猷君只用了20秒，你呢？" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="jquery-labelauty.css">
+
+
+    <!-- 百度统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?9c99c509121b0c2441bfaa8972720617";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<body>
+
+    <div id="container" onselectstart="return false">
+
+        <!-- 1 新手导航页,点击后移走 -->
+        <div id="instructionBK">
+            <img src="instruction.png" alt="" id="instruction">
+        </div>
+
+        <!-- 2 显示时间、步数；音频预加载 -->
+        <header>
+            <!--<h1>数字华容道</h1>-->
+            <p>
+                时间: <span id="timetext">00:00</span>
+                步数: <span id="step">0</span>
+                <a href="javascript:newGame();" id="newGameBtn">新游戏</a>
+            </p>
+            <!--<p>分数: <span id="score">0</span></p>-->
+
+            <audio id="collideSound">
+                <source src="collision.ogg" type="audio/ogg">
+                <source src="collision.mp3" type="audio/mp3">
+                <source src="collision.wav" type="audio/wav">
+            </audio>
+        </header>
+
+        <!-- 3 显示数字块 JS插入 #numberCell_Y_X -->
+        <div id="gridContainer">
+            <!--<div class="gridCell" id="gridCell_0_0"></div>-->
+        </div>
+
+        <!-- 4 查看排行榜、切换难度 -->
+        <footer>
+            <a href="javascript:goToRankPage();" id="goToRankPage">排行榜</a>
+            <!--<a href="javascript:paintInstruction();" id="goToRankPage">说明</a>-->
+            <!--<div id="goToRankPage">排行榜</div>-->
+            <div id="level">
+                <ul class="dowebok">
+                    <li><input type="radio" name="radio" data-labelauty="初级 3x3" id="level1" value="1"></li>
+                    <li><input type="radio" name="radio" data-labelauty="中级 4x4" id="level2" value="2"></li>
+                    <li><input type="radio" name="radio" data-labelauty="高级 5x5" id="level3" value="3"></li>
+                </ul>
+                <h3>选择难度</h3>
+                <!--<a href="javascript:paintInstruction();" id="goToInstruction">查看说明</a>-->
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="jquery-labelauty.js"></script>
+
+    <script src="instructionPage.js"></script>
+    <script src="support.js"></script>
+    <script src="ui.js"></script>
+    <script src="animation.js"></script>
+    <script src="audio.js"></script>
+    <script src="timer.js"></script>
+    <script src="rankPage.js"></script>
+    <script src="wxshare.js"></script>
+    <script src="main.js"></script>
+    <script src="event.js"></script>
+    <script src="vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        var vConsole = new VConsole();
+        console.log('Hello world');
+    </script>
+
+</body>
+</html>
